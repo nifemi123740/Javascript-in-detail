@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+</head>
+<body>
+    <h1>Error Handling in JavaScript</h1>
+    <button onclick="handleError()">Enter a number</button>
+    <p id="output"></p>
+    <script>
+      function handleError() {
+        let userInput = prompt("Please enter a number: ");
+        try {
+            if (userInput === null || userInput.trim() === "") {
+                throw new Error("Input cannot be empty!");
+            }
+            if (isNaN(userInput)) {
+                throw new Error("Input is not a valid number!");
+            }
+            let number = Number(userInput);
+            let result = number * 2;
+            document.getElementById("output").innerHTML = "Result: " + result; 
+        } catch (error) {
+            document.getElementById("output").innerHTML = "Error: " + error.message; 
+        }
+      }  
+    </script>
+</body>
+</html>
